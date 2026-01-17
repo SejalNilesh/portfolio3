@@ -23,19 +23,7 @@ section {
   z-index: 2;
 }
 
-#canvas-elem::after {
-  content: "";
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  background-image: url(/background-l.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  transition: all 0.3s linear;
-}
+
 
 #section-1 {
 
@@ -219,4 +207,11 @@ main:has(#section-2 .title[img-title="kennedy"]:hover) .images #kennedy {
 main:has(#section-2 .title[img-title="opera"]:hover) .images #opera {
   opacity: 1;
   background-color: rgb(176, 4, 4);
+}
+
+#canvas-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: url("/background-l.png") center / cover no-repeat;
 }
