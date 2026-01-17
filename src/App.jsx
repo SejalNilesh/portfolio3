@@ -44,9 +44,30 @@ function App() {
                 <path d="M30.4351,61.1758h-10.4155L0,116.838H10.3479L30.4351,61.1758Z"></path>
               </svg>
             </div>
-            <div className="nav-elem">
-              <i className="ri-arrow-right-s-line"></i> Our Show reel
+            <div className="nav-elem about-nav">
+              About Me
+
+              <div className="about-card">
+                <h3>{data.aboutCard.name}</h3>
+                <p className="role">{data.aboutCard.role}</p>
+
+                <div className="stack">
+                  {data.aboutCard.techStack.map((tech, i) => (
+                    <span key={i}>{tech}</span>
+                  ))}
+                </div>
+
+                <div className="links">
+                  <a href={data.aboutCard.linkedin} target="_blank" rel="noreferrer">
+                    LinkedIn
+                  </a>
+                  <a href={data.aboutCard.github} target="_blank" rel="noreferrer">
+                    GitHub
+                  </a>
+                </div>
+              </div>
             </div>
+
             <div className="nav-elem">
               <i className="ri-menu-3-line"></i>
             </div>

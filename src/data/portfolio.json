@@ -8,6 +8,18 @@
             "of art, design and technology."
         ]
     },
+    "aboutCard": {
+        "name": "Your name",
+        "role": " role-Frontend / Creative Developer",
+        "techStack": [
+            "React",
+            "Three.js",
+            "GSAP",
+            "Node.js"
+        ],
+        "linkedin": "https://linkedin.com/in/your-profile",
+        "github": "https://github.com/your-username"
+    },
     "projects": [
         {
             "id": "tomorrowland",
