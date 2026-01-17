@@ -1,7 +1,7 @@
 import './App.css'
 import Dog from './components/Dog'
 import { Canvas } from '@react-three/fiber'
-
+import data from './data/portfolio.json'
 function App() {
 
 
@@ -59,7 +59,7 @@ function App() {
           </nav>
           <div className="middle">
             <div className="left">
-              <h1>WE <br /> Make <br /> Good <br />Shit</h1>
+              <h1>I <br /> Make <br /> Good <br />Shit</h1>
             </div>
             <div className="right"></div>
           </div>
@@ -67,9 +67,10 @@ function App() {
             <div className="left"></div>
             <div className="right">
               <p>
-                Dogstudio is a multidisciplinary <br />
-                creative studio at the intersection <br />
-                of art, design and technology.
+                {data.about.description.map((line, i) => (
+                  <p key={i}>{line}</p>
+                ))}
+
               </p>
             </div>
           </div>
