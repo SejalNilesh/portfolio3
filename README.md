@@ -3,7 +3,9 @@ to make changes go to the src/data/portfolio.json file
 setup
 
 npm install
+
 npm run dev
+![Uploading Screenshot 2026-01-18 190006.png…]()
 
 
 # React + Vite
