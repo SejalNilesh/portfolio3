@@ -1,0 +1,224 @@
+/* responsive.css — mobile-first responsive helpers */
+
+:root{
+  --max-width:1100px;
+  --g:16px;
+  --accent:#0ea5e9;
+  --bg:#0b1117;
+  --card:#071020;
+}
+
+/* reset & base */
+*,*::before,*::after{box-sizing:border-box}
+html,body,#root{height:100%}
+html,body{margin:0;padding:0;font-family:Inter, Roboto, Arial, sans-serif;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:#e6eef6;line-height:1.4;overflow-x:hidden}
+
+/* generic container */
+.App, .container, #app, .site {
+  width:100%;
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:0 16px;
+}
+
+/* images, media, canvas, iframe (3D) */
+img, svg, iframe, canvas, video {
+  max-width:100%;
+  height:auto;
+  display:block;
+  object-fit:cover;
+}
+
+/* Hero / 3D scene safety */
+.hero, .scene-wrapper, .three-scene, .spline-embed {
+  width:100%;
+  height:60vh;            /* mobile-first locked height */
+  max-height:520px;
+  min-height:320px;
+  position:relative;
+  overflow:hidden;
+}
+.hero iframe, .hero canvas, .three-scene iframe, .spline-embed iframe {
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+}
+
+/* text scale */
+h1,h2,h3{margin:0 0 .5rem;line-height:1.12}
+h1{font-size:clamp(1.4rem,4.5vw,2.4rem)}
+h2{font-size:clamp(1.2rem,3.6vw,1.6rem)}
+p{font-size:clamp(.95rem,2.2vw,1rem);margin:0 0 1rem}
+
+/* layout helpers */
+.row{display:flex;flex-wrap:wrap;gap:var(--g)}
+.col{flex:1 1 300px;min-width:250px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--g)}
+
+/* cards & panels */
+.card, .panel {
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:10px;
+  padding:16px;
+  box-shadow:0 6px 18px rgba(2,6,23,0.6);
+}
+
+/* navbar safety: wrap rather than overflow */
+nav, .nav {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+/* buttons */
+.btn, button, .btn-link {
+  display:inline-block;
+  padding:.5rem .9rem;
+  border-radius:8px;
+  text-decoration:none;
+  cursor:pointer;
+  border:none;
+  background:var(--accent);
+  color:#021022;
+  font-weight:600;
+}
+
+/* footer & meta */
+footer, .meta {
+  opacity:.85;
+  font-size:.9rem;
+}
+
+/* small screen tweaks */
+@media (max-width: 767px) {
+  .row{flex-direction:column}
+  .col{min-width:unset;width:100%}
+  .hero{height:48vh;min-height:220px;max-height:420px}
+  .card{padding:12px}
+  nav{justify-content:space-between}
+  .overlay, .hero-text { position:relative; padding:12px; }
+}
+
+/* medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero{height:52vh;max-height:520px}
+  .container{padding:0 20px}
+}
+
+/* desktop */
+@media (min-width: 1024px) {
+  .hero{height:70vh;min-height:420px}
+  .col{flex:1 1 320px}
+}
+
+/* emergency guard (temporary) */
+html,body{overflow-x:hidden!important}
+
+/* Accessibility: large-click targets */
+a, button, .btn { touch-action:manipulation; -webkit-tap-highlight-color: transparent; }
+
+/* tiny utilities */
+.text-center{text-align:center}
+.mt-1{margin-top:8px}
+.mt-2{margin-top:16px}
+.mb-1{margin-bottom:8px}
+.mb-2{margin-bottom:16px}
+
+
+
+/* ----- Projects responsive fix (paste/append this) ----- */
+
+/* Ensure container for project titles is full-width and responsive */
+.titles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  align-items: start;
+  padding: 16px 0;
+  width: 100%;
+}
+
+/* Each project tile */
+.title {
+  background: var(--card, #071020);
+  padding: 16px;
+  border-radius: 12px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.45);
+}
+
+/* Meta small text */
+.title small {
+  opacity: 0.85;
+  font-size: 0.85rem;
+  display:block;
+}
+
+/* Project heading */
+.title h1 {
+  font-size: clamp(1rem, 3.5vw, 1.4rem);
+  margin: 6px 0 0 0;
+  line-height: 1.12;
+  word-break: break-word;
+}
+
+/* Hover card (description + link) — shown under the title on mobile */
+.hover-card {
+  margin-top: 8px;
+  background: rgba(255,255,255,0.02);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* Make sure project text wraps and does not overflow */
+.title p, .hover-card p {
+  word-break: break-word;
+  white-space: normal;
+}
+
+/* Mobile: stack vertically, reduce tile height */
+@media (max-width: 767px) {
+  .title { min-height: auto; padding: 12px; }
+  .hover-card { display: block; position: relative; }
+}
+
+/* Tablet: slightly larger tiles */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .title { padding: 14px; }
+}
+
+/* Desktop: more breathing room */
+@media (min-width: 1024px) {
+  .title { padding: 18px; min-height: 140px; }
+}
+
+/* Optional: subtle hover effect on desktop (keeps hover-card visible) */
+@media (hover: hover) and (pointer: fine) {
+  .title { transition: transform .18s ease, box-shadow .18s ease; }
+  .title:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(2,6,23,0.55); }
+}
+
+/* Quick safety: ensure no horizontal overflow */
+html, body { overflow-x: hidden !important; }
+
+
+/* Responsive project title size */
+/* === FORCE responsive project titles === */
+.titles .title > h1 {
+  font-size: clamp(0.85rem, 2.8vw, 1.15rem) !important;
+  line-height: 1.1 !important;
+  margin: 4px 0 0 0;
+  word-break: break-word;
+}
+

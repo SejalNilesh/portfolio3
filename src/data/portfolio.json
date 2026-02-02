@@ -1,81 +1,74 @@
 {
     "about": {
-        "name": "your name",
+        "name": "Sejal Chavan",
         "description": [
-            "example",
-            "Dogstudio is a multidisciplinary",
-            "creative studio at the intersection",
-            "of art, design and technology."
+            "Hi, I’m Sejal .",
+            "— a software engineering student ",
+            "who enjoys building clean, reliable web applications",
+            "I like turning ideas into working products and continuously improving them."
         ]
     },
     "aboutCard": {
-        "name": "Your name",
-        "role": " role-Frontend / Creative Developer",
+        "name": "Sejal Chavan",
+        "role": " 3rd year Information Technology Student",
         "techStack": [
-            "React",
-            "Three.js",
-            "GSAP",
+            "Java",
+            "MySQL",
+            "JavaScript",
             "Node.js"
         ],
         "linkedin": "https://linkedin.com/in/your-profile",
-        "github": "https://github.com/your-username"
+        "github": "https://github.com/SejalNilesh"
     },
     "projects": [
         {
-            "id": "tomorrowland",
-            "title": "Tomorrowland",
-            "description": "An immersive visual experience blending 3D, motion and storytelling.",
-            "github": "https://github.com/yourname/tomorrowland",
-            "startYear": 2020,
+            "id": "kind-hands-connect",
+            "title": "Kind Hands Connect",
+            "description": "A full-stack platform that connects specially-abled individuals with volunteers for academic and day-to-day assistance, featuring role-based access, request management, and scheduling.",
+            "github": "https://github.com/SejalNilesh/kind-hands-connect",
+            "startYear": 2025,
             "endYear": "ONGOING"
         },
         {
-            "id": "navy-pier",
-            "title": "Navy Pier",
-            "description": "Interactive website showcasing cultural events using WebGL and smooth scroll animations.",
-            "github": "https://github.com/yourname/navy-pier",
-            "startYear": 2019,
-            "endYear": 2021
+            "id": "relationship-status-viewer",
+            "title": "Relationship Status Viewer",
+            "description": "A fun web application that visualizes relationship status. project was initiated to learn about MVC architecture and REST API clients",
+            "github": "https://github.com/SejalNilesh/relationship-backend",
+            "startYear": 2025,
+            "endYear": "ONGOING"
+        },
+        
+        {
+            "id": "mia-chatbot",
+            "title": "MIA Chatbot",
+            "description": "An AI-powered chatbot designed to handle conversational queries with a more human-like interaction .Aims to create a  AI gossip friend.",
+            "github": "https://github.com/SejalNilesh/chatbot",
+            "startYear": 2026,
+            "endYear": "ONGOING"
         },
         {
-            "id": "msi-chicago",
-            "title": "MSI Chicago",
-            "description": "Digital experience for a science museum with 3D transitions and dynamic content.",
-            "github": "https://github.com/yourname/msi-chicago",
-            "startYear": 2021,
-            "endYear": 2022
+            "id": "interactive-3d-gift-box",
+            "title": "Interactive 3D Gift Box",
+            "description": "A lightweight interactive 3D web experience featuring animated elements and user-triggered interactions, optimized for performance and responsiveness.",
+            "github": "https://github.com/SejalNilesh/gift-box",
+            "startYear": 2024,
+            "endYear": 2024
         },
         {
-            "id": "phone",
-            "title": "This Was Louise’s Phone",
-            "description": "Experimental narrative project exploring memory, objects, and digital storytelling.",
-            "github": "https://github.com/yourname/louise-phone",
-            "startYear": 2020,
-            "endYear": 2020
+            "id": "kdrama-wrapped",
+            "title": "K-Drama Wrapped",
+            "description": "sSimilar to sportify wrapped .A data-driven web experience , showcasing personalized viewing insights and summaries with a clean, responsive UI.",
+            "github": "https://kdramawrapped-fawn.vercel.app",
+            "startYear": 2025,
+            "endYear": 2025
         },
         {
-            "id": "kikk",
-            "title": "KIKK Festival",
-            "description": "Festival website featuring bold typography, motion design, and immersive visuals.",
-            "github": "https://github.com/yourname/kikk-festival",
-            "startYear": 2018,
-            "endYear": 2019
-        },
-        {
-            "id": "kennedy",
-            "title": "The Kennedy Center",
-            "description": "Cultural platform redesign focusing on accessibility, performance, and animation.",
-            "github": "https://github.com/yourname/kennedy-center",
-            "startYear": 2021,
-            "endYear": 2023
-        },
-        {
-            "id": "opera",
-            "title": "Royal Opera of Wallonia",
-            "description": "High-end artistic website combining classical aesthetics with modern WebGL effects.",
-            "github": "https://github.com/yourname/royal-opera",
-            "startYear": 2019,
-            "endYear": 2020
+            "id": "payment-integration-module",
+            "title": "Payment Integration Module",
+            "description": "A web-based payment integration module implementing transaction flows and third-party payment gateway(razzorpay)",
+            "github": "https://github.com/SejalNilesh/HampieDumpie-fronend",
+            "startYear": 2025,
+            "endYear": 2025
         }
     ]
 }

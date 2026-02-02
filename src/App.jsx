@@ -2,6 +2,8 @@ import './App.scss'
 import Dog from './components/Dog'
 import { Canvas } from '@react-three/fiber'
 import data from './data/portfolio.json'
+import './responsive.css';
+
 function App() {
 
 
