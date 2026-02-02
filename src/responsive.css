@@ -1,224 +1,530 @@
-/* responsive.css — mobile-first responsive helpers */
+/* ============================
+   FINAL: Project card breathing + responsive polish
+   Paste this at the VERY BOTTOM of responsive.css
+   ============================ */
 
-:root{
-  --max-width:1100px;
-  --g:16px;
-  --accent:#0ea5e9;
-  --bg:#0b1117;
-  --card:#071020;
-}
+/* Reset possible conflicting min-heights */
+.titles, .title, .hover-card { min-height: 0 !important; }
 
-/* reset & base */
-*,*::before,*::after{box-sizing:border-box}
-html,body,#root{height:100%}
-html,body{margin:0;padding:0;font-family:Inter, Roboto, Arial, sans-serif;-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:#e6eef6;line-height:1.4;overflow-x:hidden}
-
-/* generic container */
-.App, .container, #app, .site {
-  width:100%;
-  max-width:var(--max-width);
-  margin:0 auto;
-  padding:0 16px;
-}
-
-/* images, media, canvas, iframe (3D) */
-img, svg, iframe, canvas, video {
-  max-width:100%;
-  height:auto;
-  display:block;
-  object-fit:cover;
-}
-
-/* Hero / 3D scene safety */
-.hero, .scene-wrapper, .three-scene, .spline-embed {
-  width:100%;
-  height:60vh;            /* mobile-first locked height */
-  max-height:520px;
-  min-height:320px;
-  position:relative;
-  overflow:hidden;
-}
-.hero iframe, .hero canvas, .three-scene iframe, .spline-embed iframe {
-  width:100%;
-  height:100%;
-  border:0;
-  display:block;
-}
-
-/* text scale */
-h1,h2,h3{margin:0 0 .5rem;line-height:1.12}
-h1{font-size:clamp(1.4rem,4.5vw,2.4rem)}
-h2{font-size:clamp(1.2rem,3.6vw,1.6rem)}
-p{font-size:clamp(.95rem,2.2vw,1rem);margin:0 0 1rem}
-
-/* layout helpers */
-.row{display:flex;flex-wrap:wrap;gap:var(--g)}
-.col{flex:1 1 300px;min-width:250px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--g)}
-
-/* cards & panels */
-.card, .panel {
-  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius:10px;
-  padding:16px;
-  box-shadow:0 6px 18px rgba(2,6,23,0.6);
-}
-
-/* navbar safety: wrap rather than overflow */
-nav, .nav {
-  display:flex;
-  gap:12px;
-  align-items:center;
-  flex-wrap:wrap;
-}
-
-/* buttons */
-.btn, button, .btn-link {
-  display:inline-block;
-  padding:.5rem .9rem;
-  border-radius:8px;
-  text-decoration:none;
-  cursor:pointer;
-  border:none;
-  background:var(--accent);
-  color:#021022;
-  font-weight:600;
-}
-
-/* footer & meta */
-footer, .meta {
-  opacity:.85;
-  font-size:.9rem;
-}
-
-/* small screen tweaks */
-@media (max-width: 767px) {
-  .row{flex-direction:column}
-  .col{min-width:unset;width:100%}
-  .hero{height:48vh;min-height:220px;max-height:420px}
-  .card{padding:12px}
-  nav{justify-content:space-between}
-  .overlay, .hero-text { position:relative; padding:12px; }
-}
-
-/* medium screens */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .hero{height:52vh;max-height:520px}
-  .container{padding:0 20px}
-}
-
-/* desktop */
-@media (min-width: 1024px) {
-  .hero{height:70vh;min-height:420px}
-  .col{flex:1 1 320px}
-}
-
-/* emergency guard (temporary) */
-html,body{overflow-x:hidden!important}
-
-/* Accessibility: large-click targets */
-a, button, .btn { touch-action:manipulation; -webkit-tap-highlight-color: transparent; }
-
-/* tiny utilities */
-.text-center{text-align:center}
-.mt-1{margin-top:8px}
-.mt-2{margin-top:16px}
-.mb-1{margin-bottom:8px}
-.mb-2{margin-bottom:16px}
-
-
-
-/* ----- Projects responsive fix (paste/append this) ----- */
-
-/* Ensure container for project titles is full-width and responsive */
+/* Container: stack on mobile, grid on desktop */
 .titles {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  align-items: start;
-  padding: 16px 0;
-  width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 20px !important;
+  padding: 20px !important;
+  width: 100% !important;
+  box-sizing: border-box;
+  margin: 0 auto;
 }
 
-/* Each project tile */
-.title {
-  background: var(--card, #071020);
-  padding: 16px;
-  border-radius: 12px;
-  min-height: 120px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 6px 18px rgba(2,6,23,0.45);
-}
-
-/* Meta small text */
-.title small {
-  opacity: 0.85;
-  font-size: 0.85rem;
-  display:block;
-}
-
-/* Project heading */
-.title h1 {
-  font-size: clamp(1rem, 3.5vw, 1.4rem);
-  margin: 6px 0 0 0;
-  line-height: 1.12;
-  word-break: break-word;
-}
-
-/* Hover card (description + link) — shown under the title on mobile */
-.hover-card {
-  margin-top: 8px;
-  background: rgba(255,255,255,0.02);
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  word-break: break-word;
-}
-
-/* Make sure project text wraps and does not overflow */
-.title p, .hover-card p {
-  word-break: break-word;
-  white-space: normal;
-}
-
-/* Mobile: stack vertically, reduce tile height */
-@media (max-width: 767px) {
-  .title { min-height: auto; padding: 12px; }
-  .hover-card { display: block; position: relative; }
-}
-
-/* Tablet: slightly larger tiles */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .title { padding: 14px; }
-}
-
-/* Desktop: more breathing room */
+/* Desktop: grid layout (overrides flex) */
 @media (min-width: 1024px) {
-  .title { padding: 18px; min-height: 140px; }
+  .titles {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 24px !important;
+    padding: 28px !important;
+    align-items: start;
+    width: min(1100px, 96%) !important;
+    margin: 0 auto;
+  }
 }
 
-/* Optional: subtle hover effect on desktop (keeps hover-card visible) */
-@media (hover: hover) and (pointer: fine) {
-  .title { transition: transform .18s ease, box-shadow .18s ease; }
-  .title:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(2,6,23,0.55); }
+/* Card: full width on mobile, limited on larger screens */
+.title {
+  width: 100% !important;
+  max-width: 880px !important;   /* allows it to grow on tablets while staying centered */
+  margin: 0 auto !important;
+  padding: 20px !important;      /* more breathing room */
+  border-radius: 12px !important;
+  background: rgba(7,16,32,0.92) !important;
+  box-shadow: 0 12px 30px rgba(2,6,23,0.52) !important;
+  box-sizing: border-box !important;
+  z-index: 6 !important;
+  overflow: visible !important;
 }
 
-/* Quick safety: ensure no horizontal overflow */
+/* Slightly larger padding for very small screens */
+@media (max-width: 420px) {
+  .title {
+    padding: 18px !important;
+    max-width: 96vw !important;
+  }
+}
+
+/* Title styling: readable and not tiny */
+.titles .title > h1,
+.title h1 {
+  font-size: clamp(1.05rem, 4vw, 1.5rem) !important;
+  line-height: 1.28 !important;
+  margin: 6px 0 10px 0 !important;
+  word-break: break-word !important;
+  letter-spacing: 0.2px;
+}
+
+/* Year text above title */
+.title small {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin-bottom: 6px;
+}
+
+/* Description: make text larger and more legible */
+.hover-card,
+.title p,
+.title .hover-card p {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  margin: 0 0 10px 0 !important;
+  word-break: break-word !important;
+  color: #d8eaf7 !important;
+}
+
+/* Description container */
+.hover-card {
+  background: rgba(255,255,255,0.03) !important;
+  padding: 14px !important;
+  border-radius: 10px !important;
+  margin-top: 12px !important;
+}
+
+/* Links */
+.hover-card a,
+.title a {
+  color: #38bdf8 !important;
+  text-decoration: none !important;
+  font-weight: 600;
+}
+
+/* Prevent 3D overlap — keep 3D behind cards */
+.three-scene, .scene, canvas, .spline-embed {
+  z-index: 1 !important;
+  position: relative;
+}
+
+/* Cards above 3D */
+.title { z-index: 7 !important; }
+
+/* Reduce 3D scale on small screens so it doesn't dominate */
+@media (max-width: 768px) {
+  canvas, .three-scene, .scene, .model, .spline-embed {
+    transform: scale(0.50) !important;
+    transform-origin: center !important;
+    opacity: 0.88 !important;
+  }
+}
+
+/* Small utility: avoid horizontal scroll */
 html, body { overflow-x: hidden !important; }
 
-
-/* Responsive project title size */
-/* === FORCE responsive project titles === */
-.titles .title > h1 {
-  font-size: clamp(0.85rem, 2.8vw, 1.15rem) !important;
-  line-height: 1.1 !important;
-  margin: 4px 0 0 0;
-  word-break: break-word;
+/* Subtle hover polish on non-touch */
+@media (hover: hover) and (pointer: fine) {
+  .title { transition: transform .18s ease, box-shadow .18s ease; }
+  .title:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(2,6,23,0.55); }
 }
 
+
+
+
+
+
+
+
+
+
+/* ==============================
+   FIX: force horizontal project titles + card layout
+   Paste at the VERY BOTTOM of responsive.css
+   ============================== */
+
+/* Ensure title is horizontal (undo any vertical writing-mode/rotate) */
+.titles .title > h1,
+.title h1 {
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  transform: none !important;
+  transform-origin: center !important;
+  display: block !important;
+  white-space: normal !important;
+  letter-spacing: normal !important;
+  word-break: break-word !important;
+  text-align: left !important;
+  margin: 6px 0 10px 0 !important;
+  font-size: clamp(1.05rem, 3.4vw, 1.45rem) !important;
+  line-height: 1.25 !important;
+  padding: 0 !important;
+}
+
+/* Make card layout flow vertically on mobile (title above description)
+   and limit description width so it doesn't become a narrow vertical column */
+.title {
+  display: flex !important;
+  flex-direction: column !important; /* stack title then description */
+  align-items: flex-start !important;
+  gap: 12px !important;
+  padding: 18px !important;
+  width: 100% !important;
+  max-width: 92vw !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure hover-card / description takes full card width */
+.hover-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-top: 0 !important;
+  padding: 14px !important;
+  line-height: 1.6 !important;
+}
+
+/* Keep small-meta (year) in normal flow */
+.title small {
+  display: block !important;
+  margin-bottom: 6px !important;
+  font-size: 0.85rem !important;
+  opacity: 0.85 !important;
+}
+
+/* Desktop: restore multi-column grid while ensuring headings are horizontal */
+@media (min-width: 1024px) {
+  .titles {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 22px !important;
+    padding: 24px !important;
+    align-items: start;
+    width: min(1100px, 96%) !important;
+    margin: 0 auto !important;
+  }
+
+  .title {
+    max-width: none !important;
+    padding: 18px !important;
+    flex-direction: column !important;
+  }
+
+  .titles .title > h1,
+  .title h1 {
+    text-align: left !important;
+  }
+}
+
+/* Safety: undo any odd transforms or writing-mode on children */
+.titles * {
+  transform: none !important;
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+}
+
+
+/* ===============================
+   FINAL FIX — STOP CROPPING THE DOG
+   (NO position / transform changes)
+   =============================== */
+
+/* 1. Do NOT clip the hero */
+.hero,
+.scene-wrapper,
+.three-scene {
+  overflow: visible !important;
+}
+
+/* 2. Give hero enough height so model fits */
+.hero {
+  min-height: 80vh !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* 3. Reset any transforms accidentally applied to the model */
+canvas,
+.three-scene,
+.scene,
+.model,
+.spline-embed {
+  transform: none !important;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+}
+
+/* 4. Make sure canvas scales naturally */
+canvas {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+/* 5. Mobile: slightly smaller hero, still NO cropping */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 65vh !important;
+  }
+}
+
+
+
+/* ============================
+  About card — responsive fix
+  Paste at bottom of responsive.css
+  ============================ */
+
+/* Generic about container fallback (covers .about, .about-me, #about etc.) */
+[class*="about"], [id*="about"] {
+  box-sizing: border-box;
+}
+
+/* Main about wrapper: mobile-first (stacked) */
+.about,
+.about-me,
+.about-section,
+.about-card,
+[class*="about"] > .card,
+[id*="about"] > .card {
+  width: 100% !important;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;       /* stack image then text on small screens */
+  gap: 14px;
+  align-items: center;
+  background: rgba(7,16,32,0.88);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+/* If you have an image + text column inside the about card */
+.about .about-inner,
+.about-me .about-inner,
+.about-card .about-inner,
+[class*="about"] .about-inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Preferential selectors for common splits: image + content */
+.about .about-image,
+.about .about-text,
+.about-me .about-image,
+.about-me .about-text,
+.about-card .about-image,
+.about-card .about-text {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Make profile / hero images responsive and circular if desired */
+.about .about-image img,
+.about-me .about-image img,
+.about-card .about-image img,
+[class*="about"] img {
+  max-width: 100%;
+  width: min(360px, 45vw);
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Text column: readable sizes */
+.about .about-text,
+.about-me .about-text,
+.about-card .about-text,
+[class*="about"] .about-text {
+  width: 100%;
+  padding: 0 6px;
+}
+
+.about .about-text h2,
+.about-me .about-text h2,
+.about-card .about-text h2,
+[class*="about"] .about-text h2 {
+  font-size: clamp(1.1rem, 4vw, 1.8rem);
+  margin: 0 0 8px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.about .about-text p,
+.about-me .about-text p,
+.about-card .about-text p,
+[class*="about"] .about-text p {
+  font-size: clamp(.95rem, 2.6vw, 1rem);
+  line-height: 1.6;
+  margin: 0;
+  text-align: left;
+  max-width: 90ch; /* prevents extremely long lines on wide screens */
+}
+
+/* Desktop / wider screens: switch to two-column layout */
+@media (min-width: 900px) {
+  .about,
+  .about-me,
+  .about-card,
+  [class*="about"] > .card,
+  [id*="about"] > .card {
+    flex-direction: row;
+    align-items: center;
+    gap: 28px;
+    padding: 28px;
+  }
+
+  .about .about-image,
+  .about-me .about-image,
+  .about-card .about-image {
+    flex: 0 0 360px;      /* fixed-ish image column */
+    max-width: 360px;
+  }
+
+  .about .about-text,
+  .about-me .about-text,
+  .about-card .about-text {
+    flex: 1 1 auto;
+    padding: 0 12px;
+    text-align: left;
+  }
+
+  .about .about-text h2,
+  .about-me .about-text h2,
+  .about-card .about-text h2 {
+    text-align: left;
+  }
+}
+
+/* Small fine-tuning for very small phones */
+@media (max-width: 420px) {
+  .about .about-text p,
+  .about-me .about-text p,
+  .about-card .about-text p,
+  [class*="about"] .about-text p {
+    font-size: 0.95rem;
+  }
+  .about,
+  .about-me,
+  .about-card {
+    padding: 14px;
+  }
+}
+
+/* Make CTA buttons inside about card full-width on small screens */
+.about .about-text .btn,
+.about-me .about-text .btn,
+.about-card .about-text .btn,
+[class*="about"] .about-text .btn {
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+}
+
+
+
+/* ==============================
+   HERO HEADLINE: prevent clipping + responsive sizing
+   Paste at the VERY BOTTOM of responsive.css / App.scss
+   ============================== */
+
+/* Make sure hero container does not clip visible parts of heading */
+.hero,
+.hero-wrapper,
+.hero-section,
+.scene-wrapper,
+.three-scene,
+.spline-embed {
+  overflow: visible !important;
+  position: relative !important;
+}
+
+/* Reset transforms that might push the heading off-screen */
+.hero * {
+  transform: none !important;
+}
+
+/* Ensure the heading sits above the 3D canvas */
+.hero h1,
+.hero .hero-title,
+.hero .heading,
+.header-hero h1,
+.hero-title {
+  position: relative !important;
+  z-index: 30 !important;              /* bring headline above scene */
+  display: block !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  text-orientation: mixed !important;
+  writing-mode: horizontal-tb !important;
+  transform: none !important;
+  margin: 0 !important;
+  padding: 0 14px !important;          /* side padding so text doesn't hit edges */
+  line-height: 1.02 !important;
+  letter-spacing: normal !important;
+  text-align: left !important;
+}
+
+/* Responsive headline sizing (mobile-first):
+   - small: readable
+   - middle: scales smoothly
+   - large: capped at desktop size */
+.hero h1,
+.hero .hero-title,
+.hero .heading {
+  font-size: clamp(1.6rem, 9.5vw, 4.2rem) !important;
+}
+
+/* Give the hero extra top padding so the heading is not partially off-canvas */
+.hero {
+  padding-top: 12vh !important;    /* increases space above heading */
+  padding-bottom: 6vh !important;
+  box-sizing: border-box !important;
+}
+
+/* Small screens - reduce headline more and reduce top padding slightly */
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 9vh !important;
+    padding-bottom: 6vh !important;
+  }
+  .hero h1,
+  .hero .hero-title,
+  .hero .heading {
+    font-size: clamp(1.3rem, 10.5vw, 3rem) !important;
+    line-height: 1.02 !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+}
+
+/* Medium screens tuning */
+@media (min-width: 481px) and (max-width: 1023px) {
+  .hero {
+    padding-top: 11vh !important;
+  }
+  .hero h1 {
+    font-size: clamp(1.6rem, 8.2vw, 3.8rem) !important;
+  }
+}
+
+/* Desktop: slightly larger max size if you want */
+@media (min-width: 1024px) {
+  .hero {
+    padding-top: 14vh !important;
+    padding-bottom: 4vh !important;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 6.2vw, 5.2rem) !important;
+  }
+}
+
+/* Safety: ensure hero headline never overflows horizontally */
+.hero h1 { max-width: 96vw !important; overflow-wrap: break-word !important; }
+
+/* Keep 3D canvas visually behind (lower z-index) */
+canvas, .three-scene, .spline-embed {
+  z-index: 1 !important;
+  position: relative !important;
+}
